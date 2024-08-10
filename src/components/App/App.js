@@ -2,7 +2,8 @@ import React from 'react';
 
 import ToastPlayground from '../ToastPlayground';
 import Footer from '../Footer';
-import Toast from '../Toast';
+
+export const ToastContext = React.createContext(null);
 
 function App() {
   const [toasts, setSelectedToasts] = React.useState([]);
@@ -12,18 +13,16 @@ function App() {
   }
 
   const removeToast = (toastId) => {
+    console.log(toastId);
     const newToasts = toasts.filter((toast) => toast.id !== toastId);
     setSelectedToasts(newToasts);
   }
   
   return (
-    <>
-      {toasts.length > 0 && toasts.map(({...info}) => (
-        <Toast {...info} dismiss={removeToast} key={info.id}/>
-       ))}
+    <ToastContext.Provider value={{toasts, removeToast}}>
       <ToastPlayground addNewToast={addNewToast} />
       <Footer />
-    </>
+    </ToastContext.Provider>
   );
 }
 

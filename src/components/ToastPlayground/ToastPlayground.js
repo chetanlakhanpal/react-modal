@@ -3,6 +3,7 @@ import React from 'react';
 import Button from '../Button';
 
 import styles from './ToastPlayground.module.css';
+import ToastShelf from '../ToastShelf/ToastShelf';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 const DEFAULT_VARIANT = VARIANT_OPTIONS[0];
@@ -28,6 +29,8 @@ function ToastPlayground({addNewToast}) {
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
+
+      <ToastShelf />
 
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
