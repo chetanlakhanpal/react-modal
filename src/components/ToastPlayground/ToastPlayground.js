@@ -18,12 +18,7 @@ function ToastPlayground({addNewToast}) {
       variant: selectedVariant
     };
 
-
-    console.log(toast);
-
     addNewToast(toast);
-
-    setSelectedVariant(DEFAULT_VARIANT);
     setSelectedMessage('');
   }
 

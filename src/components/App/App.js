@@ -10,11 +10,16 @@ function App() {
   const addNewToast = (toast) => {
     setSelectedToasts([...toasts, toast]);
   }
+
+  const removeToast = (toastId) => {
+    const newToasts = toasts.filter((toast) => toast.id !== toastId);
+    setSelectedToasts(newToasts);
+  }
   
   return (
     <>
-      {toasts.length > 0 && toasts.map(({id, ...info}) => (
-        <Toast {...info} key={id}/>
+      {toasts.length > 0 && toasts.map(({...info}) => (
+        <Toast {...info} dismiss={removeToast} key={info.id}/>
        ))}
       <ToastPlayground addNewToast={addNewToast} />
       <Footer />
