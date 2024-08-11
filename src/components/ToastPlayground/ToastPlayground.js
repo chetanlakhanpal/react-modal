@@ -13,6 +13,10 @@ function ToastPlayground({addNewToast}) {
   const [message, setSelectedMessage] = React.useState('');
 
   const constructToast = () => {
+    if (!message) {
+      return
+    }
+    
     const toast = {
       id: crypto.randomUUID(),
       message,
@@ -54,9 +58,8 @@ function ToastPlayground({addNewToast}) {
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
             {VARIANT_OPTIONS.map(variant => (
-              <label htmlFor={`variant-${variant}`}>
+              <label htmlFor={`variant-${variant}`} key={variant}>
                 <input id={`variant-${variant}`}
-                  key={variant}
                   type="radio"
                   name="variant"
                   value={variant}
